@@ -472,6 +472,14 @@ duckLevelSlider.addEventListener('input', (e) => {
     saveSettings();
 });
 
+// Invert controls checkbox
+const invertControlsCheckbox = document.getElementById('invertControlsCheckbox');
+
+invertControlsCheckbox.addEventListener('change', (e) => {
+    settings.invertControls = e.target.checked;
+    saveSettings();
+});
+
 // Load settings from localStorage
 function loadSettings() {
     const saved = localStorage.getItem('tempestSettings');
@@ -481,6 +489,7 @@ function loadSettings() {
         settings.volume = loaded.volume !== undefined ? loaded.volume : 0.3;
         settings.musicVolume = loaded.musicVolume !== undefined ? loaded.musicVolume : 0.2;
         settings.duckLevel = loaded.duckLevel !== undefined ? loaded.duckLevel : 0.3;
+        settings.invertControls = loaded.invertControls || false;
         
         // Update UI
         document.querySelectorAll('.difficulty-btn').forEach(btn => {
@@ -495,6 +504,8 @@ function loadSettings() {
         
         duckLevelSlider.value = settings.duckLevel * 100;
         duckLevelValue.textContent = Math.round(settings.duckLevel * 100) + '%';
+        
+        invertControlsCheckbox.checked = settings.invertControls;
         
         soundManager.setVolume(settings.volume);
         soundManager.setMusicVolume(settings.musicVolume);
@@ -717,13 +728,17 @@ function spawnBlock() {
 function updatePlayer() {
     const now = Date.now();
     
-    if (keys['ArrowLeft'] && !keys['ArrowRight']) {
+    // Apply control inversion if enabled
+    const leftKey = settings.invertControls ? 'ArrowRight' : 'ArrowLeft';
+    const rightKey = settings.invertControls ? 'ArrowLeft' : 'ArrowRight';
+    
+    if (keys[leftKey] && !keys[rightKey]) {
         if (now - lastMoveTime > 100) {
             player.segment = (player.segment - 1 + currentGeometry.segments) % currentGeometry.segments;
             soundManager.playSegmentTone(player.segment, currentGeometry.segments);
             lastMoveTime = now;
         }
-    } else if (keys['ArrowRight'] && !keys['ArrowLeft']) {
+    } else if (keys[rightKey] && !keys[leftKey]) {
         if (now - lastMoveTime > 100) {
             player.segment = (player.segment + 1) % currentGeometry.segments;
             soundManager.playSegmentTone(player.segment, currentGeometry.segments);
