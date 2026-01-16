@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEMPEST - 1981 Arcade Classic</title>
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <div class="score-display">
+                <span class="label">SCORE:</span>
+                <span id="score">0</span>
+            </div>
+            <div class="level-display">
+                <span class="label">LEVEL:</span>
+                <span id="level">1</span>
+            </div>
+            <div class="lives-display">
+                <span class="label">LIVES:</span>
+                <span id="lives">3</span>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas"></canvas>
+        
+        <div class="controls-info">
+            <p><strong>CONTROLS:</strong></p>
+            <p>← → : Move | SPACE: Fire (Hold for Rapid Fire) | Z: Super Zapper</p>
+            <p>ENTER: Start Game | P: Pause | ESC: Quit</p>
+        </div>
+        
+        <div id="startScreen" class="overlay">
+            <h1>TEMPEST × TETRIS</h1>
+            <p class="subtitle">THE ULTIMATE ARCADE FUSION</p>
+            <p class="instructions">Shoot falling blocks and enemies!</p>
+            <p class="instructions">Clear the rim to make way for the future!</p>
+            <p class="start-prompt">Press ENTER to Start</p>
+            <button id="settingsBtn" class="menu-button">⚙️ Settings</button>
+        </div>
+        
+        <div id="settingsScreen" class="overlay hidden">
+            <h1>SETTINGS</h1>
+            
+            <div class="setting-group">
+                <h2>DIFFICULTY</h2>
+                <div class="button-group">
+                    <button class="difficulty-btn active" data-difficulty="easy">EASY</button>
+                    <button class="difficulty-btn" data-difficulty="medium">MEDIUM</button>
+                    <button class="difficulty-btn" data-difficulty="hard">HARD</button>
+                    <button class="difficulty-btn" data-difficulty="insane">INSANE</button>
+                </div>
+                <p class="setting-description">Easy: Slower spawns, fewer enemies | Insane: Chaos mode!</p>
+            </div>
+            
+            <div class="setting-group">
+                <h2>AUDIO SETTINGS</h2>
+                
+                <div class="volume-control">
+                    <label class="volume-label-text">Master Volume</label>
+                    <div class="slider-row">
+                        <span class="volume-label">🔇</span>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="30" class="slider">
+                        <span class="volume-label">🔊</span>
+                        <span id="volumeValue" class="volume-display">30%</span>
+                    </div>
+                </div>
+                
+                <div class="volume-control">
+                    <label class="volume-label-text">Background Music</label>
+                    <div class="slider-row">
+                        <span class="volume-label">🔇</span>
+                        <input type="range" id="musicVolumeSlider" min="0" max="100" value="20" class="slider">
+                        <span class="volume-label">🔊</span>
+                        <span id="musicVolumeValue" class="volume-display">20%</span>
+                    </div>
+                </div>
+                
+                <div class="volume-control">
+                    <label class="volume-label-text">Duck Level (Music during effects)</label>
+                    <div class="slider-row">
+                        <span class="volume-label">Low</span>
+                        <input type="range" id="duckLevelSlider" min="0" max="50" value="30" class="slider">
+                        <span class="volume-label">High</span>
+                        <span id="duckLevelValue" class="volume-display">30%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="backBtn" class="menu-button">← Back to Menu</button>
+        </div>
+        
+        <div id="gameOverScreen" class="overlay hidden">
+            <h1>GAME OVER</h1>
+            <p class="final-score">FINAL SCORE: <span id="finalScore">0</span></p>
+            <p class="start-prompt">Press ENTER to Play Again</p>
+            <button id="settingsBtn2" class="menu-button">⚙️ Settings</button>
+        </div>
+    </div>
+    
+    <script src="sounds.js"></script>
+    <script src="tempest.js"></script>
+</body>
+</html>

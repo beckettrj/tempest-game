@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #000;
+    color: #0ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+.header {
+    display: flex;
+    gap: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+.label {
+    color: #fff;
+    margin-right: 10px;
+}
+
+#gameCanvas {
+    border: 3px solid #0ff;
+    box-shadow: 0 0 20px #0ff, inset 0 0 20px rgba(0, 255, 255, 0.1);
+    background: #000;
+}
+
+.controls-info {
+    text-align: center;
+    font-size: 14px;
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff;
+}
+
+.controls-info p {
+    margin: 5px 0;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px 60px;
+    border: 3px solid #0ff;
+    box-shadow: 0 0 30px #0ff, inset 0 0 20px rgba(0, 255, 255, 0.2);
+    z-index: 10;
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.overlay h1 {
+    font-size: 64px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+    letter-spacing: 10px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #f0f;
+    text-shadow: 0 0 10px #f0f;
+    margin-bottom: 20px;
+}
+
+.instructions {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.start-prompt {
+    font-size: 24px;
+    animation: blink 1s infinite;
+    margin-top: 30px;
+}
+
+.final-score {
+    font-size: 32px;
+    margin: 20px 0;
+    color: #ff0;
+    text-shadow: 0 0 10px #ff0;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.menu-button {
+    background: rgba(0, 255, 255, 0.1);
+    border: 2px solid #0ff;
+    color: #0ff;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+    text-shadow: 0 0 5px #0ff;
+}
+
+.menu-button:hover {
+    background: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 20px #0ff;
+    transform: scale(1.05);
+}
+
+.setting-group {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.setting-group h2 {
+    font-size: 24px;
+    color: #0ff;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #0ff;
+}
+
+.setting-description {
+    font-size: 14px;
+    color: #888;
+    margin-top: 10px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.difficulty-btn {
+    background: rgba(0, 136, 255, 0.1);
+    border: 2px solid #08f;
+    color: #08f;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 100px;
+}
+
+.difficulty-btn:hover {
+    background: rgba(0, 136, 255, 0.2);
+    box-shadow: 0 0 15px #08f;
+}
+
+.difficulty-btn.active {
+    background: rgba(0, 255, 0, 0.3);
+    border-color: #0f0;
+    color: #0f0;
+    box-shadow: 0 0 20px #0f0;
+}
+
+.volume-control {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.volume-label-text {
+    font-family: 'Courier New', monospace;
+    color: #0ff;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.slider-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.volume-label {
+    font-size: 18px;
+    color: #0ff;
+    min-width: 40px;
+    text-align: center;
+}
+
+.slider {
+    width: 300px;
+    height: 8px;
+    background: rgba(0, 136, 255, 0.2);
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #0ff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px #0ff;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #0ff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px #0ff;
+}
+
+.volume-display {
+    min-width: 50px;
+    color: #ff0;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ff0;
+}
+
+/* Glow effects */
+.score-display #score {
+    color: #ff0;
+    text-shadow: 0 0 10px #ff0, 0 0 20px #ff0;
+}
+
+.level-display #level {
+    color: #0f0;
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+}
+
+.lives-display #lives {
+    color: #f00;
+    text-shadow: 0 0 10px #f00, 0 0 20px #f00;
+}

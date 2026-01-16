@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <!-- Radial gradient from cyan center to black edges -->
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#003366;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#001a33;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Glow effect for center -->
+    <radialGradient id="centerGlow">
+      <stop offset="0%" style="stop-color:#00ffff;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#0088ff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Blue glow for rim -->
+    <radialGradient id="rimGlow">
+      <stop offset="0%" style="stop-color:#00ccff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#0088ff;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Gradient background -->
+  <rect width="256" height="256" fill="url(#bgGradient)"/>
+  
+  <!-- Outer glow halo -->
+  <circle cx="128" cy="128" r="120" fill="url(#rimGlow)" opacity="0.3"/>
+  
+  <!-- TEMPEST tunnel - outer ring with glow -->
+  <circle cx="128" cy="128" r="100" fill="none" stroke="#00ccff" stroke-width="4" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Concentric rings -->
+  <circle cx="128" cy="128" r="75" fill="none" stroke="#0088ff" stroke-width="2" opacity="0.7"/>
+  <circle cx="128" cy="128" r="55" fill="none" stroke="#0088ff" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Radial spokes (12 segments for detail) -->
+  <g stroke="#00aaff" stroke-width="2" opacity="0.6">
+    <line x1="128" y1="28" x2="128" y2="228"/>
+    <line x1="28" y1="128" x2="228" y2="128"/>
+    <line x1="47" y1="47" x2="209" y2="209"/>
+    <line x1="209" y1="47" x2="47" y2="209"/>
+    <line x1="38" y1="88" x2="218" y2="168"/>
+    <line x1="88" y1="38" x2="168" y2="218"/>
+    <line x1="218" y1="88" x2="38" y2="168"/>
+    <line x1="168" y1="38" x2="88" y2="218"/>
+  </g>
+  
+  <!-- Center tunnel hole with bright glow -->
+  <circle cx="128" cy="128" r="40" fill="url(#centerGlow)"/>
+  <circle cx="128" cy="128" r="20" fill="#001a33" stroke="#00ffff" stroke-width="3">
+    <animate attributeName="r" values="20;22;20" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Player segment (bright green/yellow at top) -->
+  <path d="M 118 28 L 138 28 L 138 45 L 128 35 Z" fill="#00ff00" stroke="#66ff66" stroke-width="2" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;1;0.9" dur="0.8s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 118 28 L 128 35 L 128 45 L 118 28 Z" fill="#00ff00" stroke="#66ff66" stroke-width="2" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;1;0.9" dur="0.8s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- Enemies (colorful shapes at various positions) -->
+  <rect x="115" y="70" width="12" height="12" fill="#ff0000" stroke="#ff6666" stroke-width="1" opacity="0.9"/>
+  <polygon points="128,95 135,108 121,108" fill="#ff00ff" stroke="#ff66ff" stroke-width="1" opacity="0.9"/>
+  
+  <!-- Yellow bullets traveling inward -->
+  <circle cx="128" cy="55" r="3" fill="#ffff00" stroke="#ffff66" stroke-width="1">
+    <animate attributeName="cy" values="55;80;55" dur="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="3;4;3" dur="0.4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Small TEMPEST logo text at bottom -->
+  <text x="128" y="240" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#00ffff" text-anchor="middle" opacity="0.7">T</text>
+</svg>
+
