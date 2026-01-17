@@ -64,10 +64,33 @@ body {
     border: 3px solid #0ff;
     box-shadow: 0 0 30px #0ff, inset 0 0 20px rgba(0, 255, 255, 0.2);
     z-index: 10;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .overlay.hidden {
     display: none;
+}
+
+/* Scrollbar styling */
+.overlay::-webkit-scrollbar {
+    width: 12px;
+}
+
+.overlay::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.5);
+    border-left: 1px solid #0ff;
+}
+
+.overlay::-webkit-scrollbar-thumb {
+    background: #0ff;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #0ff;
+}
+
+.overlay::-webkit-scrollbar-thumb:hover {
+    background: #0aa;
 }
 
 .overlay h1 {
